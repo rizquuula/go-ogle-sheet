@@ -68,6 +68,8 @@ func JsonHandler(w http.ResponseWriter, r *http.Request) {
 	resp := JsonResponse{
 		Data: jsonData,
 	}
+
+	w.Header().Set("Content-Type", "application/json")
 	if err := json.NewEncoder(w).Encode(resp); err != nil {
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 	}
